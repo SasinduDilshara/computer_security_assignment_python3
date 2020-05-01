@@ -5,7 +5,7 @@ class User(ABC):
     '''
     Abstract class for users.
     '''
-    def __init__(self, username, password):
+    def __init__(self,username, password):
         self.username = username
         self.__password = AuthHelper.hashed_password(password)
 

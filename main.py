@@ -13,7 +13,7 @@ def main():
     # ConfigFileReader.add(Patient("patient","patient"))
     # ConfigFileReader.add(Admin("admin1","admin1"))
     # for i in ConfigFileReader.loadall():
-    #     print(i.username,i.getPassword())
+    #     print(i.username,i.getPassword(),i.sensitive_level,i.type)
     # a = ConfigFileReader.print_rec()
     # if(a!=False):
     #     print(a.username,a.getPassword())

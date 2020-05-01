@@ -1,3 +1,6 @@
+
+from .add_n_view_user_records import AddViewUsers
+
 class NurseUI:
     
     @staticmethod
@@ -8,7 +11,7 @@ class NurseUI:
             print(ini_msg)
             inp = input().strip()
             if(inp == '1'):
-                pass
+                val = AddViewUsers.addMembers(username)
             elif(inp == '2'):
                 pass
             elif(inp == '3'):

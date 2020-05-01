@@ -1,3 +1,5 @@
+from views.UserUi.add_n_view_user_records import AddViewUsers
+
 class AdminUI:
     
     @staticmethod
@@ -7,7 +9,8 @@ class AdminUI:
             print(ini_msg)
             inp = input().strip()
             if(inp == '1'):
-                pass
+                val = AddViewUsers.addMembers(username)
+                break
             elif(inp == '2'):
                 pass
             elif(inp == '3'):
