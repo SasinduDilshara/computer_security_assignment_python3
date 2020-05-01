@@ -37,7 +37,7 @@ class ConfigFileReader:
         try:
             records = FileReader.loadall(ConfigFileReader.filename)
             for record in records:
-                if(record.username == username_ and record.password == password__):
+                if(record.username == username_ and record.getPassword() == password__):
                     return record
                     break
             else:
@@ -81,10 +81,13 @@ class ConfigFileReader:
         try:
             if(records == False):
                 records = FileReader.loadall(ConfigFileReader.filename)
-            for record in records:
-                print(record.username)
+            try:
+                for record in records:
+                    print(record.username)
+            except Exception as ee:
+                print(records.username)
         except Exception as e:
-            print("Error happen in loadall")
+            print("Error happen in printrec")
             print(e)
             return False   
 
