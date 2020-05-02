@@ -28,5 +28,11 @@ class FileReader:
                 print("Error occur when writing to file")
                 print(e)
                 return False
+                
+    @staticmethod
+    def erase(filename):
+        file = open(filename,"r+")
+        file.truncate(0)
+        file.close()
     
             

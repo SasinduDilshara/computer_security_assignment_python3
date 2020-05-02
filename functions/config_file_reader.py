@@ -89,6 +89,48 @@ class ConfigFileReader:
         except Exception as e:
             print("Error happen in printrec")
             print(e)
-            return False   
+            return False
+
+    @staticmethod
+    def changepassword(username,password,newpassword):
+        try:
+            rec = ConfigFileReader.find_by_username(username)
+            
+            if(rec == False):
+                print("Error happen in changepassword")
+                return False
+            else:
+                if(rec.getPassword() == password):
+                    records = ConfigFileReader.loadall()
+                    nrc = []
+                    try:
+                        for i in records:
+                            if(i.username != username):
+                                nrc.append(i)
+                    except Exception:
+                        nrc.append(records)
+                    rec.setPassword(newpassword)
+                    nrc.append(rec)
+                    ConfigFileReader.erase()
+                    for ele in nrc:
+                        ConfigFileReader.add(ele)
+                    return True
+                else:
+                    print("\nType the correct password\n")
+                    return False
+                
+
+        except Exception as e:
+            print("Error happen in changepassword")
+            print(e)
+            return False
 
             
+    @staticmethod
+    def erase():
+        try:
+            FileReader.erase(ConfigFileReader.filename)
+        except Exception as e:
+            print("Can't changed")
+            print(e)
+            return False

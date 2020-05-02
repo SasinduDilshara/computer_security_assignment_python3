@@ -7,6 +7,7 @@ from models.personal_data.personal_data_parent import PersonalData
 from models.personal_data.patient_personal_details import PatientData
 from models.personal_data.doctor_personal_details import DoctorData
 from models.personal_data.nurse_personal_details import NurseData
+from functions.auth_hash_helper import AuthHelper
 
 class AddViewUsers:
 
@@ -284,6 +285,28 @@ class AddViewUsers:
             print(record.__str__())
 
         except Exception as e:
-            print("\nCant find profile")
-            print(e)
             print("\n")
+            # print(e)
+            print("\n")
+    
+    @staticmethod
+    def changepassword(username):
+        while True:
+            pas= ''
+            newpas = ''
+            print("Type pass word and your new password. type 'exit' to go to the previous screen")
+            print("\n Enter the password")
+            pas = input("Password:- ")
+            if(pas == 'exit'):
+                return True
+            print("\n Enter the new password:- ")
+            newpas = input("New Password:- ")
+            if(newpas == 'exit'):
+                return True
+            pas = AuthHelper.hashed_password(pas)
+            val = ConfigFileReader.changepassword(username,pas,newpas)
+            if(val == False):
+                continue
+            else:
+                print("\nYour details\n")
+                return AddViewUsers.findowndetails(username)
