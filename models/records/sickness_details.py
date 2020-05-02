@@ -9,6 +9,6 @@ class SicknessDetails(ReportData):
     Create one object for each sickness
     '''
     def __init__(self, patient_username,sickness_name, sensitivity_level,description,date):
-        super().__init__(patient_username, sensitivity_level,date)
+        super().__init__(patient_username, sensitivity_level,description,date)
         self.sickness_name = sickness_name
 

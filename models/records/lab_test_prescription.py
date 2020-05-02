@@ -8,6 +8,6 @@ class LabTestPrescription(ReportData):
     Create one object for each prescription
     '''
     def __init__(self, patient_username,result, sensitivity_level,description,date):
-        super().__init__(patient_username, sensitivity_level,date)
+        super().__init__(patient_username, sensitivity_level,description,date)
         self.result = result
 
