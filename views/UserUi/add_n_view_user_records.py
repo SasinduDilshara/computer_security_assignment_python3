@@ -3,6 +3,7 @@ from functions.data_file_reader import DataFileReader
 from models.users.doctor import Doctor
 from models.users.nurse import Nurse
 from models.users.patient import Patient
+from models.personal_data.personal_data_parent import PersonalData
 from models.personal_data.patient_personal_details import PatientData
 from models.personal_data.doctor_personal_details import DoctorData
 from models.personal_data.nurse_personal_details import NurseData
@@ -268,3 +269,21 @@ class AddViewUsers:
         if(val1 == False or val2 == False):  
             return False
         return True
+
+    def findowndetails(username):
+        try:
+            recs = DataFileReader.find_by_username(username)
+            try:
+                for i in recs:
+                    if(isinstance(i,PersonalData)):
+                        record = i
+                        break
+            except Exception:
+                record = recs
+
+            print(record.__str__())
+
+        except Exception as e:
+            print("\nCant find profile")
+            print(e)
+            print("\n")

@@ -211,6 +211,60 @@ class AddViewRecords:
             else:
                 print("Succefully added")
                 return True
+
+
+    @staticmethod
+    def find_own_records(username,type_):
+        try:
+            records = DataFileReader.find_by_username(username)
+            l = []
+            d = []
+            s =[]
+            for r in records:
+                if(isinstance(r,LabTestPrescription)):
+                    l.append(r)
+                elif(isinstance(r,SicknessDetails)):
+                    s.append(r)
+                elif(isinstance(r,DrugPrescription)):
+                    d.append(r)
+            if(type_ == "lab record"):
+                if(len(l) != 0):
+                    print("\nLab Descriptions\n")
+                    for i in l:
+                        print("patient username: "+i.username)
+                        print("Description: "+i.description) 
+                        print("Result: "+i.result) 
+                        print("Issued Date: "+i.date.__str__())
+                        print("\n")
+            elif(type_ == "sickness record"):
+                if(len(s) != 0):
+                    print("\nSickness Descriptions\n")
+                    for i in s:
+                        print("patient username: "+i.username)
+                        print("Description: "+i.description) 
+                        print("sickness_name: "+i.sickness_name) 
+                        print("Issued Date: "+i.date.__str__())
+                        print("\n") 
+            elif(type_ == "drug record"):
+                if(len(d) != 0):
+                    print("\nDrug Descriptions\n")
+                    for i in d:
+                        print("patient username: "+i.username)
+                        print("Description: "+i.description) 
+                        print("valid_period: "+i.valid_period) 
+                        print("Issued Date: "+i.date.__str__())
+                        print("\n")
+            else:
+                print("Wrong Type chosen\nTry again")
+                return False
+
+
+        except Exception as e:
+            print("\nNo reocords for "+username+" .")
+            print(e)
+            print("\n")
+            return False
+
             
 
 

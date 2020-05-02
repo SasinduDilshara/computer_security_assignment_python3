@@ -28,6 +28,7 @@ class DataFileReader:
             for record in records:
                 if(record.username == username_):
                     recs.append(record)
+            return recs
             
         except Exception as e:
             print("Error happen in find_by_username")
@@ -161,7 +162,6 @@ class DataFileReader:
     def Record_find_by_finder_username(username,type_):
         '''
         '''
-        # print(username+" USERNAME")
         finder = DataFileReader.get_user_by_username(username)
         if(finder == False):
             print("No records .")

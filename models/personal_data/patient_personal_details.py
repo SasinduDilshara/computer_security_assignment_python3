@@ -12,6 +12,6 @@ class PatientData(PersonalData):
         a += "lastName :- "+self.lastName+"\n"
         a += "telephone :- "+self.telephone+"\n"
         a += "address :- "+self.address+"\n"
-        a += "age :- "+self.age
+        a += "age :- "+self.age+"\n"
         a += "special_notes :- "+self.special_notes
         return a

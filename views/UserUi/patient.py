@@ -1,3 +1,7 @@
+from .add_n_view_user_records import AddViewUsers
+from views.UserUi.add_n_view_records import AddViewRecords
+
+
 class PatientUI:
     
     @staticmethod
@@ -7,12 +11,17 @@ class PatientUI:
             print(ini_msg)
             inp = input().strip()
             if(inp == '1'):
-                pass
+                val = AddViewUsers.findowndetails(username)
+                print("===============================================================================")
             elif(inp == '2'):
-                pass
+                val = AddViewRecords.find_own_records(username,'lab record')
+                print("===============================================================================")
             elif(inp == '3'):
-                pass
+                val = AddViewRecords.find_own_records(username,'sickness record')
+                print("===============================================================================")
             elif(inp == '4'):
-                pass
+                val = AddViewRecords.find_own_records(username,'drug record')
+                print("===============================================================================")
             elif(inp == '5'):
+                print("===============================================================================")
                 return -1

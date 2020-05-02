@@ -13,7 +13,7 @@ class SignInPage:
             user_input_username = input("Enter Your username:- ").strip()
             if(user_input_password == 'exit' or user_input_username == 'exit'):
                 return -1
-            user_input_password = input("Enter Your username:- ").strip()
+            user_input_password = input("Enter Your password:- ").strip()
             if(user_input_password == 'exit' or user_input_username == 'exit'):
                 return -1
             user_record = ConfigFileReader.find_by_username_and_password(user_input_username,AuthHelper.hashed_password(user_input_password))
