@@ -25,6 +25,7 @@ class AddViewRecords:
         '''
         try:
             while True:
+                print("You have to type the report type and the userID")
                 print("Enter the type of your report ex:- lab record | sickness record | drug record\n Other inputs will discarded")
                 print("Type 'exit' to exit.")
                 type_ = input("Enter the type:- ").strip()

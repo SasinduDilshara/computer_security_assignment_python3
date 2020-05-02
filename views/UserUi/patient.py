@@ -6,7 +6,7 @@ class PatientUI:
     
     @staticmethod
     def showUI(username):
-        ini_msg = "welcome "+username+" .\n press 1 to view your details\npress 2 to view your lab test records.\n press 3 to view your drug prescription records\n press 4 to view your sickness detils\npress 5 to change the password\npress 6 to logout"
+        ini_msg = "welcome "+username+" .\n press 1 to view your details\npress 2 to view your lab test records.\n press 3 to view your sickness records\n press 4 to view your drug prescription detils\npress 5 to change the password\npress 6 to logout"
         while(True):
             print(ini_msg)
             inp = input().strip()

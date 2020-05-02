@@ -22,7 +22,7 @@ class AddViewUsers:
                     recs = DataFileReader.loadall(['doctor','nurse','patient'])
                     # print(recs)
                     for k in recs:
-                        print(k+"\n")
+                        print("\n"+k+"\n")
                         for ele in recs[k]:
                             print("\n")
                             print(ele.__str__())
@@ -30,7 +30,7 @@ class AddViewUsers:
                 elif(user_.type == 'doctor'):
                     recs = DataFileReader.loadall(['nurse','patient'])
                     for k in recs:
-                        print(k+"\n")
+                        print("\n"+k+"\n")
                         for ele in recs[k]:
                             print("\n")
                             print(ele.__str__())
@@ -38,7 +38,7 @@ class AddViewUsers:
                 elif(user_.type == 'nurse'):
                     recs = DataFileReader.loadall(['patient'])
                     for k in recs:
-                        print(k+"\n")
+                        print("\n"+k+"\n")
                         for ele in recs[k]:
                             print("\n")
                             print(ele.__str__())
