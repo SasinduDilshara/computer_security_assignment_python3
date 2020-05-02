@@ -1,5 +1,6 @@
 
 from .add_n_view_user_records import AddViewUsers
+from views.UserUi.add_n_view_records import AddViewRecords
 
 class NurseUI:
     
@@ -12,12 +13,17 @@ class NurseUI:
             inp = input().strip()
             if(inp == '1'):
                 val = AddViewUsers.addMembers(username)
+                print("================================================================================================")
                 print("\n")
             elif(inp == '2'):
-                pass
+                val = AddViewRecords.viewRecords(username,'lab record')
+                print("================================================================================================")
             elif(inp == '3'):
-                pass
+                val = AddViewRecords.viewRecords(username,'sickness record')
+                print("================================================================================================")
             elif(inp == '4'):
-                pass
+                val = AddViewRecords.viewRecords(username,'drug record')
+                print("================================================================================================")                
             elif(inp == '5'):
+                print("================================================================================================")
                 return -1

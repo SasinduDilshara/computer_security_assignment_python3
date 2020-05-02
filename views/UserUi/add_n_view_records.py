@@ -64,7 +64,7 @@ class AddViewRecords:
     @staticmethod
     def addRecords(username):
         user_ = ConfigFileReader.find_by_username(username)
-        if(user_ == False or user_.type != 'doctor'):
+        if(user_ == False or user_.type not in ['doctor','admin']):
             print("You haven't access to add records.\n")
         else:
             while True:
