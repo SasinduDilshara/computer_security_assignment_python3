@@ -13,7 +13,7 @@ import os
 class DataFileReader:
     # filename = "../database/"+config_file
     script_dir = os.path.dirname(__file__) #<-- absolute dir the script is in
-    rel_path = "../ztest/record_file"
+    rel_path = "../db/record_file"
     filename = os.path.join(script_dir, rel_path)
     
     @staticmethod
