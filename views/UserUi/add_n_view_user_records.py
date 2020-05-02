@@ -46,7 +46,7 @@ class AddViewUsers:
                     return -1
                 return 1
         except Exception as e:
-            print("error in view members")
+            print("No members to view")
             print(e)
             return -1
 
@@ -137,7 +137,7 @@ class AddViewUsers:
                 val = AddViewUsers.viewMembers(username)
                 # return val
                 # break
-            if(inp == '1'):
+            elif(inp == '1'):
                 val = AddViewUsers.patientCreate()
                 
                 # if(val == 'y'):

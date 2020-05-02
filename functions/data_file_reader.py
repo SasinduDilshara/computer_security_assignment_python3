@@ -2,6 +2,7 @@ import pickle
 from functions.file_reader import FileReader
 from functions.config_file_reader import ConfigFileReader
 from config.config import record_file
+from models.personal_data.personal_data_parent import PersonalData
 import os
 
 class DataFileReader:
@@ -49,8 +50,15 @@ class DataFileReader:
             if(type_ == ''):
                 return FileReader.loadall(DataFileReader.filename)
             else:
+                recss= []
                 recs = FileReader.loadall(DataFileReader.filename)
-                for rec in recs:
+                try:
+                    for rec in recs:
+                        if(isinstance(rec,PersonalData)):
+                            recss.append(rec)
+                except Exception:
+                    recss.append([recs])
+                for rec in recss:
                     user = DataFileReader.get_user_by_username(rec.username)
                     if(user == False):
                         return False
@@ -59,7 +67,7 @@ class DataFileReader:
                             load[user.type].append(rec)
                 return load
         except Exception as e:
-            print("Error happen in loadall")
+            print("No data to view")
             print(e)
             return False
 
