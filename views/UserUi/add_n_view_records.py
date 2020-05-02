@@ -16,6 +16,82 @@ import datetime
 
 
 class AddViewRecords:
+ 
+    @staticmethod
+    def find_user_records(username):
+        '''
+        find all records for a specific user.
+        find_user_records(seracher,owner)
+        '''
+        try:
+            while True:
+                print("Enter the type of your report ex:- lab record | sickness record | drug record\n Other inputs will discarded")
+                print("Type 'exit' to exit.")
+                type_ = input("Enter the type:- ").strip()
+                if(type_ == 'exit'):
+                    return -1
+                if(type_ not in ['lab record' , 'sickness record' , 'drug record']):
+                    print("\nInvalid type . Type Again\n")
+                    continue
+                else:
+                    break
+            while True:
+                patient = input("Enter the patient username:- ").strip()
+                find = ConfigFileReader.find_by_username(patient)
+                if(patient == 'exit'):
+                    return -1
+                if(find == False or find.type != 'patient'):
+                    print("\nUsername can't find . Type Again\n")
+                    continue
+                else:
+                    break
+            recs = DataFileReader.Record_find_by_finder_username(username,type_)
+            records = []
+            for i in recs:
+                if(i.username == patient):
+                    records.append(i)
+            if(records == False):
+                return False
+            else:
+                l = []
+                d = []
+                s =[]
+                for r in records:
+                    if(isinstance(r,LabTestPrescription)):
+                        l.append(r)
+                    elif(isinstance(r,SicknessDetails)):
+                        s.append(r)
+                    elif(isinstance(r,DrugPrescription)):
+                        d.append(r)
+                if(len(l) != 0):
+                    print("\nLab Descriptions\n")
+                    for i in l:
+                        print("patient username: "+i.username)
+                        print("Description: "+i.description) 
+                        print("Result: "+i.result) 
+                        print("Issued Date: "+i.date.__str__())
+                        print("\n")
+                if(len(d) != 0):
+                    print("\nDrug Descriptions\n")
+                    for i in d:
+                        print("patient username: "+i.username)
+                        print("Description: "+i.description) 
+                        print("valid_period: "+i.valid_period) 
+                        print("Issued Date: "+i.date.__str__())
+                        print("\n")
+                if(len(s) != 0):
+                    print("\nSickness Descriptions\n")
+                    for i in s:
+                        print("patient username: "+i.username)
+                        print("Description: "+i.description) 
+                        print("sickness_name: "+i.sickness_name) 
+                        print("Issued Date: "+i.date.__str__())
+                        print("\n") 
+                    
+        except Exception as e:
+            print("No record\n")
+            print(e)
+            return False
 
     @staticmethod
     def viewRecords(username,type_ = ''):

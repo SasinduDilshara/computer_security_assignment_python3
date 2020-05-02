@@ -23,13 +23,12 @@ class DataFileReader:
         This method find any data record contain in file filter by username
         '''
         try:
+            recs = []
             records = FileReader.loadall(DataFileReader.filename)
             for record in records:
                 if(record.username == username_):
-                    return record
-                    break
-            else:
-                return False
+                    recs.append(record)
+            
         except Exception as e:
             print("Error happen in find_by_username")
             print(e)
@@ -146,7 +145,7 @@ class DataFileReader:
             return False
 
     @staticmethod
-    def Record_find_by_username(username,type_,sl = sensitive_level_1):
+    def Record_find_by_username(username,type_,sl = sensitive_level_4):
         records = DataFileReader.loadRecods(type_)
         if(records == False):
             print("No record for "+username+".")
@@ -154,7 +153,7 @@ class DataFileReader:
         else:
             recc= [] 
             for rec in records:
-                if(rec.getSensivity() == sl and rec.username == username):
+                if(int(rec.getSensivity()) >= int(sl) and rec.username == username):
                     recc.append(rec)
             return recc
 
