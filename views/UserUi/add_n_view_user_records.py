@@ -24,6 +24,7 @@ class AddViewUsers:
                         for ele in recs[k]:
                             print("\n")
                             print(ele.__str__())
+                    return 1
                 elif(user_.type == 'doctor'):
                     recs = DataFileReader.loadall(['nurse','patient'])
                     for k in recs:
@@ -31,6 +32,7 @@ class AddViewUsers:
                         for ele in recs[k]:
                             print("\n")
                             print(ele.__str__())
+                    return 1
                 elif(user_.type == 'nurse'):
                     recs = DataFileReader.loadall(['patient'])
                     for k in recs:
@@ -38,13 +40,15 @@ class AddViewUsers:
                         for ele in recs[k]:
                             print("\n")
                             print(ele.__str__())
+                    return 1
                 else:
                     print("you haven't priviledges")
-                    return False
-            return True
+                    return -1
+                return 1
         except Exception as e:
             print("error in view members")
             print(e)
+            return -1
 
     @staticmethod
     def addMembers(username):
@@ -70,29 +74,31 @@ class AddViewUsers:
     @staticmethod
     def adminAdd(username):
         while True:
-            print("\ntype 0 to view users\ntype 1 to add doctor\n type 2 to add nurse\ntype 3 to add patient\n")
+            print("\ntype 0 to view users\ntype 1 to add doctor\n type 2 to add nurse\ntype 3 to add patient\ntype 9 to exit")
             inp = input()
             if(inp == '0'):
                 val = AddViewUsers.viewMembers(username)
-                break
+                # return val
             elif(inp == '3'):
                 val = AddViewUsers.patientCreate()
-                if(val == 'y'):
-                    continue
-                else:
-                    break
+                # if(val == 'y'):
+                #     continue
+                # else:
+                #     break
             elif(inp == '2'):
                 val = AddViewUsers.nurseCreate()
-                if(val == 'y'):
-                    continue
-                else:
-                    break
+                # if(val == 'y'):
+                #     continue
+                # else:
+                #     break
             elif(inp == '1'):
                 val = AddViewUsers.doctorCreate()
-                if(val == 'y'):
-                    continue
-                else:
-                    break
+                # if(val == 'y'):
+                #     continue
+                # else:
+                #     break
+            elif(inp == '9'):
+                return 1
             else:
                 print("invalid input\n")
 
@@ -100,40 +106,46 @@ class AddViewUsers:
     @staticmethod
     def doctorAdd(username):
          while True:
-            print("\ntype 0 to view patents and nurses\ntype 1 to add nurse\ntype 2 to add patient\n")
+            print("\ntype 0 to view patents and nurses\ntype 1 to add nurse\ntype 2 to add patient\ntype 9 to exit")
             inp = input()
             if(inp == '0'):
                 val = AddViewUsers.viewMembers(username)
-                break
+                # return val
             elif(inp == '2'):
                 val = AddViewUsers.patientCreate()
-                if(val == 'y'):
-                    continue
-                else:
-                    break
+                # if(val == 'y'):
+                #     continue
+                # else:
+                #     break
             elif(inp == '1'):
                 val = AddViewUsers.nurseCreate()
-                if(val == 'y'):
-                    continue
-                else:
-                    break
+                # if(val == 'y'):
+                #     continue
+                # else:
+                #     break
+            elif(inp == '9'):
+                return 1
             else:
                 print("invalid input\n")
         
     @staticmethod
     def nurseAdd(username):
         while True:
-            print("\ntype 1 to add patient\n")
+            print("\ntype 0 to view patient details\ntype 1 to add patient\ntype 9 to exit")
             inp = input()
             if(inp == '0'):
                 val = AddViewUsers.viewMembers(username)
-                break
+                # return val
+                # break
             if(inp == '1'):
                 val = AddViewUsers.patientCreate()
+                
                 # if(val == 'y'):
                 #     continue
                 # else:
                 #     break
+            elif(inp == '9'):
+                return 1
             else:
                 print("invalid input\n") 
 

@@ -12,6 +12,7 @@ class NurseUI:
             inp = input().strip()
             if(inp == '1'):
                 val = AddViewUsers.addMembers(username)
+                print("\n")
             elif(inp == '2'):
                 pass
             elif(inp == '3'):

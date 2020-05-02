@@ -10,7 +10,8 @@ class AdminUI:
             inp = input().strip()
             if(inp == '1'):
                 val = AddViewUsers.addMembers(username)
-                break
+                print("\n")
+                # break
             elif(inp == '2'):
                 pass
             elif(inp == '3'):

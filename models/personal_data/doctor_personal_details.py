@@ -13,6 +13,6 @@ class DoctorData(PersonalData):
         a += "lastName :- "+self.lastName+"\n"
         a += "telephone :- "+self.telephone+"\n"
         a += "address :- "+self.address+"\n"
-        a += "nic :- "+self.nic
+        a += "nic :- "+self.nic+"\n"
         a += "doc_id :- "+self.doc_id
         return a
